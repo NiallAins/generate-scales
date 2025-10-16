@@ -360,7 +360,14 @@
                 this.mouseDrag = true;
                 this.onMouseMove(e);
             });
+            MOUSE_GROUP.addEventListener('touchstart', e => {
+                this.mouseDrag = true;
+                this.onMouseMove(e.targetTouches[0]);
+            });
             MOUSE_GROUP.addEventListener('mouseup', e => {
+                this.mouseDrag = false;
+            });
+             MOUSE_GROUP.addEventListener('touchend', e => {
                 this.mouseDrag = false;
             });
 
@@ -473,6 +480,7 @@
         //
 
         onMouseMove(mouseEvent) {
+            console.log(mouseEvent);
             const BOX = this._SVG.getBoundingClientRect();
 
             let angValue =
@@ -555,6 +563,9 @@
     document.body.addEventListener('mouseup', () => {
         InputRangeArc.INPUTS.forEach(inp => inp.mouseDrag = false);
     });
+    document.body.addEventListener('touchend', () => {
+        InputRangeArc.INPUTS.forEach(inp => inp.mouseDrag = false);
+    });
     document.body.addEventListener('mouseleave', () => {
         InputRangeArc.INPUTS.forEach(inp => inp.mouseDrag = false);
     });
@@ -562,5 +573,10 @@
         InputRangeArc.INPUTS
             .filter(inp => inp.mouseDrag)
             .forEach(inp => inp.onMouseMove(e));
+    });
+    document.body.addEventListener('touchmove', e => {
+        InputRangeArc.INPUTS
+            .filter(inp => inp.mouseDrag)
+            .forEach(inp => inp.onMouseMove(e.targetTouches[0]));
     });
 })();

@@ -38,7 +38,6 @@ const Inputs = {
 
         // Position for mobile
         if (WIDTH.isSmallViewport) {
-            console.log('hey');
             this.EL_INP_INTER.setAttribute('arc', INP_ARC_SMALL_VIEWPORT);
             this.EL_INP_INTER.setAttribute('angle', 0);
             this.EL_INP_START.setAttribute('arc', INP_ARC_SMALL_VIEWPORT);
