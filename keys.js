@@ -7,7 +7,7 @@ const Keys = {
             'keydown',
             event => {
                 const SC = this.shortcuts.find(s => s.code === event.code);
-                if (SC) {
+                if (!event.repeat && SC) {
                     Sound.playNote(SC.freq);
                     const
                         KEY = this.EL_KEYS.querySelector('.keys__key--' + SC.code),

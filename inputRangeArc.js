@@ -480,7 +480,6 @@
         //
 
         onMouseMove(mouseEvent) {
-            console.log(mouseEvent);
             const BOX = this._SVG.getBoundingClientRect();
 
             let angValue =
